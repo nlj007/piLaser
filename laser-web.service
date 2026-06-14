@@ -1,0 +1,15 @@
+[Unit]
+Description=Laser Control Web App
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=admin
+WorkingDirectory=/home/admin
+ExecStart=/home/admin/laser-dsp-venv/bin/python /home/admin/master-laser.py
+Restart=on-failure
+RestartSec=5
+Environment=FLASK_ENV=production
+
+[Install]
+WantedBy=multi-user.target
